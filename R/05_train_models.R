@@ -194,7 +194,7 @@ train_and_tune_models <- function(split_obj,
   )
 
   emit_training_progress("Tuning XGBoost.")
-  xgb_grid <- dials::grid_latin_hypercube(
+  xgb_grid <- dials::grid_space_filling(
     dials::tree_depth(range = c(3, 8)),
     dials::learn_rate(range = c(-3, -1)),
     dials::loss_reduction(range = c(-5, 0)),

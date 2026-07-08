@@ -24,6 +24,10 @@ create_project_dirs <- function() {
 
 log_step <- function(message) {
   cat(glue::glue("\n[{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {message}\n"))
+  if (interactive()) {
+    utils::flush.console()
+  }
+  invisible(TRUE)
 }
 
 safe_divide <- function(numerator, denominator) {
