@@ -1,0 +1,30 @@
+services:
+  mlflow-ui:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: ghana-r-2026-mlflow-ui
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+      - ./artifacts/mlflow:/mlflow/artifacts
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:////mlflow/mlruns/mlflow.db
+      --default-artifact-root file:///mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+
+  rstudio:
+    build: .
+    container_name: ghana-r-2026-ai-predictive-analytics
+    ports:
+      - "8787:8787"
+    environment:
+      PASSWORD: workshop
+      DISABLE_AUTH: "false"
+      MLFLOW_TRACKING_URI: http://mlflow-ui:5000
+    volumes:
+      - .:/home/rstudio/workshop
+    working_dir: /home/rstudio/workshop
+    depends_on:
+      - mlflow-ui

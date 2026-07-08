@@ -1,0 +1,14 @@
+---
+title: Stakeholder Report Redirect
+format: html
+execute:
+  echo: false
+---
+
+The primary Quarto report now lives at the project root as `report.qmd`, following the reference project structure.
+
+Render it with:
+
+```r
+quarto::quarto_render("report.qmd")
+```

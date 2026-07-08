@@ -1,0 +1,4 @@
+model_id,model_family,recipe_used,resampling_method,folds,purpose
+linear_regression,Linear model,linear_recipe,vfold_cv,3,Transparent baseline benchmark
+random_forest,Tree ensemble,tree_recipe,vfold_cv,3,Non-linear tabular model for robust comparison
+xgboost,Gradient boosted trees,tree_recipe,vfold_cv,3,Advanced high-performing model for market-value prediction

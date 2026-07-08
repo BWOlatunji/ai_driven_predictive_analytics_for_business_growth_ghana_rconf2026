@@ -1,0 +1,51 @@
+### Modeling Strategy
+
+The workflow compares a baseline linear regression model with stronger tree-based models. This is intentional for teaching: participants see why a transparent baseline matters, and they also see how random forest and XGBoost can capture non-linear market patterns.
+
+The project keeps the baseline linear recipe separate from the tree-model recipe. Linear regression is more sensitive to redundant dummy variables and collinearity, while tree-based models can use a richer set of engineered predictors with less risk of rank-deficient fits.
+
+### Model Comparison
+
+@tbl-model-comparison ranks the trained models using test-set RMSE, MAE, and R-squared. These metrics are calculated on the log-transformed target, `log_price`, because housing prices are highly skewed.
+
+```{r}
+#| label: tbl-model-comparison
+#| tbl-cap: Model comparison table
+
+make_model_comparison_tbl(report_artifacts$model_comparison)
+```
+
+```{r}
+#| label: fig-model-comparison
+#| fig-cap: Model comparison by RMSE
+
+safe_include_graphic("artifacts/figures/model_comparison_rmse.png", alt = "Model comparison RMSE plot")
+```
+
+### Prediction Quality
+
+The actual-versus-predicted chart transforms predictions back from the log scale into Naira. This gives stakeholders a more intuitive view of model fit while retaining the modeling benefits of a log-transformed training target.
+
+```{r}
+#| label: fig-predicted-vs-actual
+#| fig-cap: Actual versus predicted property prices
+
+safe_include_graphic("artifacts/figures/predicted_vs_actual.png", alt = "Actual versus predicted property prices")
+```
+
+::: {.callout-note}
+## Interpreting the prediction scale
+
+The model learns `log_price`, but the stakeholder-facing prediction artifact uses `expm1(.pred)` to convert predictions back to the original price scale. This means `predicted_price`, `actual_price`, and `price_gap` in the business screening files are shown in Naira, not log units.
+:::
+
+### Feature Importance
+
+Feature importance helps translate model behavior into business language. It gives participants a starting point for discussing whether location, property type, room structure, or parking capacity is driving estimated value.
+
+```{r}
+#| label: fig-feature-importance
+#| fig-cap: Feature importance from the selected model
+
+safe_include_graphic("artifacts/figures/feature_importance.png", alt = "Feature importance plot")
+```

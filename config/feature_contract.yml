@@ -1,0 +1,19 @@
+feature_contract:
+  required_raw_columns:
+    - bedrooms
+    - bathrooms
+    - toilets
+    - parking_space
+    - title
+    - town
+    - state
+  engineered_columns:
+    - market_hub
+    - has_parking
+    - total_rooms
+    - total_wet_rooms
+    - bathroom_bedroom_ratio
+    - toilet_bedroom_ratio
+    - parking_per_bedroom
+  target:
+    - log_price

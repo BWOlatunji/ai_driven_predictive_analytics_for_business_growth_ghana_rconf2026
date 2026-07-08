@@ -1,0 +1,54 @@
+### Business Context
+
+Nigeria's real-estate market is a strong African market use case because property decisions are high-value, location-sensitive, and affected by fragmented market information. A practical predictive workflow can help analysts answer questions such as:
+
+- What is a reasonable estimated value for this listing?
+- Which towns or states show strong market signals?
+- Which property characteristics are associated with higher predicted value?
+- Which listings require closer review because their market price differs materially from the model estimate?
+
+### Stakeholders
+
+The workflow is designed for business users and technical teams who need repeatable market intelligence:
+
+- real estate investors;
+- developers;
+- property technology platforms;
+- REIT-style analysts;
+- banks and mortgage lenders;
+- urban planners and market researchers.
+
+### Dataset and Validation Evidence
+
+The workshop dataset contains listing-level property information such as bedrooms, bathrooms, toilets, parking space, property type/title, town, state, and price. The workflow validates the incoming data before modeling so participants can see that machine learning starts with evidence about data quality.
+
+```{r}
+#| label: tbl-run-manifest
+#| tbl-cap: Run governance summary
+
+make_run_manifest_tbl(report_artifacts$run_manifest)
+```
+
+::: {.callout-note}
+## Data validation principle
+
+A model can only be as reliable as the data pipeline that feeds it. For this reason, the project includes `pointblank` validation output in `artifacts/reports/validation_report.html` and CSV summaries in `artifacts/metrics/`.
+:::
+
+### Market Intelligence Layer
+
+The project also writes location-level summaries and exploratory figures. These outputs help bridge the technical model workflow and the business-growth story: pricing varies by geography, room configuration, and market concentration.
+
+```{r}
+#| label: fig-price-distribution
+#| fig-cap: Property price distribution
+
+safe_include_graphic("artifacts/figures/price_distribution.png", alt = "Property price distribution")
+```
+
+```{r}
+#| label: fig-median-price-state
+#| fig-cap: Median property price by state
+
+safe_include_graphic("artifacts/figures/median_price_by_state.png", alt = "Median property price by state")
+```

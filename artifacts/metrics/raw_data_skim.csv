@@ -1,0 +1,9 @@
+skim_type,skim_variable,n_missing,complete_rate,character.min,character.max,character.empty,character.n_unique,character.whitespace,numeric.mean,numeric.sd,numeric.p0,numeric.p25,numeric.p50,numeric.p75,numeric.p100,numeric.hist
+character,title,0,1,14,22,0,7,0,NA,NA,NA,NA,NA,NA,NA,NA
+character,town,0,1,3,25,0,189,0,NA,NA,NA,NA,NA,NA,NA,NA
+character,state,0,1,3,11,0,25,0,NA,NA,NA,NA,NA,NA,NA,NA
+numeric,bedrooms,0,1,NA,NA,NA,NA,NA,4.338814437227658,1.138497439463858,1,4,4,5,9,▁▇▆▁▁
+numeric,bathrooms,0,1,NA,NA,NA,NA,NA,4.600797500616625,1.1631608869192203,1,4,5,5,9,▁▆▇▂▁
+numeric,toilets,0,1,NA,NA,NA,NA,NA,5.176354517799885,1.2262533973017904,1,5,5,6,9,▁▃▇▇▁
+numeric,parking_space,0,1,NA,NA,NA,NA,NA,4.041724903395544,1.3999361198618585,1,4,4,4,9,▂▇▁▁▁
+numeric,price,0,1,NA,NA,NA,NA,NA,301380208.47241634,12204027269.380903,90000,52000000,85000000,160000000,1800000000000,▇▁▁▁▁

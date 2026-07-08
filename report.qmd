@@ -1,0 +1,36 @@
+---
+title: AI-Driven Predictive Analytics for Business Growth Using R
+subtitle: Real Estate Market Intelligence in Nigeria
+author: Ghana R Conference 2026 Workshop
+output-file: stakeholder_report.html
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/report_helpers.R")
+report_artifacts <- load_report_artifacts()
+```
+
+## Executive Summary {#sec-executive-summary}
+
+{{< include /qmd/_01_executive_summary.qmd >}}
+
+{{< pagebreak >}}
+
+## Business and Data Soundness {#sec-business-data-soundness}
+
+{{< include /qmd/_02_business_data_soundness.qmd >}}
+
+{{< pagebreak >}}
+
+## Model Development and Performance {#sec-model-performance}
+
+{{< include /qmd/_03_model_performance.qmd >}}
+
+{{< pagebreak >}}
+
+## Business Screening and Governance {#sec-business-governance}
+
+{{< include /qmd/_04_business_governance.qmd >}}

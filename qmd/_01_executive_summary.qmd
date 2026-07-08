@@ -1,0 +1,50 @@
+### Workshop Purpose
+
+This report summarizes the Ghana R Conference 2026 workshop project: **AI-Driven Predictive Analytics for Business Growth Using R: Insights from African Market Use Cases**. The project uses Nigerian housing listings as a practical real-estate market-intelligence use case.
+
+The business question is straightforward: **can we use housing market data to estimate property value and support smarter real estate growth decisions?** The workflow demonstrates how raw African market data can move through validation, feature engineering, model training, model comparison, stakeholder reporting, and deployment-aware handoff artifacts.
+
+### Overall Conclusion
+
+The project remains a decision-support workflow, not an automated valuation authority. Its strongest value is that it gives investors, developers, property technology teams, lenders, and REIT-style analysts a repeatable analytical process for pricing guidance, market screening, and portfolio review.
+
+When the current artifact set is available, the selected champion model is shown in @tbl-best-model. The model comparison stage evaluates a simple baseline against stronger tree-based methods so participants can see the business value of disciplined model selection rather than relying on a single algorithm.
+
+```{r}
+#| label: tbl-best-model
+#| tbl-cap: Best model performance summary
+
+make_best_model_tbl(report_artifacts$best_model_metrics)
+```
+
+### Key Workshop Takeaways
+
+1. **Business framing comes before modeling.** The prediction target is useful only when connected to pricing, investment screening, and market-expansion decisions.
+2. **Validation is part of the product.** Data checks, run manifests, and report artifacts make the workflow easier to trust and repeat.
+3. **Model performance must be interpreted carefully.** The model is trained on `log_price`, while stakeholder-facing predictions are transformed back into Naira for interpretation.
+4. **Price gaps are screening signals, not final investment decisions.** A listing below the model estimate should trigger due diligence, not automatic purchase action.
+
+{{< pagebreak >}}
+
+### Reproducible Workflow
+
+The report follows the same reproducible pattern as the reference project: data and modeling logic live in `R/`, narrative sections live in `qmd/`, and the root `report.qmd` assembles the final stakeholder deliverable.
+
+```{mermaid}
+%%| label: fig-reproducible-workflow
+%%| fig-cap: Reproducible workshop reporting workflow
+%%| fig-align: center
+
+flowchart LR
+A[(Raw Nigeria housing CSV)] --> B[Data validation]
+B --> C[Feature engineering]
+C --> D[Model training and tuning]
+D --> E[Evaluation artifacts]
+E --> F[[Quarto stakeholder report]]
+```
+
+::: {.callout-tip}
+## Why this matters for the workshop
+
+Participants are not only learning how to fit a model in R. They are learning how to build a traceable analytics workflow where every chart, metric, recommendation, and report table can be regenerated from the project folder.
+:::

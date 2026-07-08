@@ -1,0 +1,23 @@
+project:
+  name: ghana_r_2026_ai_predictive_analytics_r
+  version: v2-production-aware
+  use_case: Nigeria real estate market intelligence
+
+modeling:
+  target: log_price
+  split:
+    train_prop: 0.80
+    strata: price_band
+  resampling:
+    fast_folds: 3
+    full_folds: 5
+    method: vfold_cv
+  champion_metric: rmse
+
+hyperparameter_search:
+  fast:
+    random_forest_grid_levels: 3
+    xgboost_grid_size: 6
+  full:
+    random_forest_grid_levels: 5
+    xgboost_grid_size: 15

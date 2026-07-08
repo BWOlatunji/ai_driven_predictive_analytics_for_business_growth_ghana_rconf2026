@@ -1,0 +1,3 @@
+model,mtry,min_n,.config,tree_depth,learn_rate,loss_reduction
+random_forest,12,30,pre0_mod9_post0,NA,NA,NA
+xgboost,12,6,pre0_mod6_post0,4,0.05086432334236968,0.06431013936748317

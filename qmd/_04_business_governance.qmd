@@ -1,0 +1,86 @@
+### Price Gap Analysis
+
+A useful business-growth layer is the comparison between observed listing price and model-estimated price. The project defines the price gap as:
+
+\[
+\text{price gap} = \text{actual listing price} - \text{predicted price}
+\]
+
+The percentage version is:
+
+\[
+\text{price gap percent} = \frac{\text{actual listing price} - \text{predicted price}}{\text{predicted price}}
+\]
+
+A negative price gap means the listing is below the model estimate. This may indicate a potential opportunity, but it may also indicate data quality issues, incomplete listing information, distress sales, legal/title issues, or other market context not captured in the dataset.
+
+```{r}
+#| label: fig-price-gap
+#| fig-cap: Distribution of model-based price gaps
+
+safe_include_graphic("artifacts/figures/price_gap_distribution.png", alt = "Model-based price gap distribution")
+```
+
+### Business Screening Candidates
+
+```{r}
+#| label: tbl-screening-candidates
+#| tbl-cap: Top business screening candidates
+
+make_screening_candidates_tbl(report_artifacts$screening_candidates)
+```
+
+::: {.callout-warning}
+## Due diligence warning
+
+The price-gap signal should be treated as a prioritization tool. It should not replace physical inspection, legal verification, title review, neighborhood intelligence, or investment committee judgment.
+:::
+
+
+### Experiment Tracking with MLflow
+
+The workshop now includes an explicit MLflow tracking stage. After model training and evaluation, the run can be logged to MLflow so participants can inspect the experiment name, run name, model metrics, parameters, tags, and artifact references in a browser-based tracking UI.
+
+Recommended workshop sequence:
+
+1. Start the MLflow UI.
+2. Run the fast or full modelling workflow.
+3. Run `source("scripts/03_run_mlflow_tracking.R")`.
+4. Open the MLflow UI and compare the logged metrics.
+
+The default local tracking URI is `http://127.0.0.1:5001`. Inside Docker Compose, the RStudio service uses `http://mlflow-ui:5000`.
+
+```{r}
+#| label: tbl-mlflow-tracking
+#| tbl-cap: MLflow tracking status or local fallback ledger
+
+make_mlflow_tracking_tbl(report_artifacts$mlflow_ledger)
+```
+
+::: {.callout-note}
+## Why this matters
+
+MLflow helps participants understand that model development is experimental. Instead of only reporting the final XGBoost result, the project records the comparison between linear regression, random forest, and XGBoost, making the modelling decision easier to audit and explain.
+:::
+
+### Governance and Deployment-Aware Handoff
+
+The workflow writes artifacts that support reproducibility and handoff:
+
+- model comparison metrics;
+- best-model metrics;
+- resampling summary;
+- run manifest;
+- validation report;
+- feature contract;
+- packaged model object;
+- model card and deployment notes;
+- scored-property outputs.
+
+These artifacts help convert the workshop from a one-off modeling exercise into a portfolio-ready demonstration of the machine-learning lifecycle in R.
+
+### Limitations
+
+The model should be improved before real production use. Important next steps include continuous data refresh, stronger outlier review, monitoring for drift, external market validation, explainable AI outputs, and deployment testing through a containerized scoring workflow.
+
+The key workshop message remains: **AI-driven predictive analytics becomes valuable when predictions are connected to business decisions, reproducible artifacts, and clear stakeholder communication.**

@@ -1,0 +1,2 @@
+project_name,use_case_name,conference_topic,workflow_version,run_mode,run_timestamp,best_model,best_rmse,best_mae,best_rsq,r_version
+AI-Driven Predictive Analytics for Business Growth Using R,Nigeria Real Estate Market Intelligence,AI-Driven Predictive Analytics for Business Growth Using R: Insights from African Market Use Cases,v2-production-aware,fast,2026-07-08 14:38:14.921693,xgboost,0.7033409121129446,0.4966383034962327,0.6430429148170654,R version 4.4.1 (2024-06-14 ucrt)

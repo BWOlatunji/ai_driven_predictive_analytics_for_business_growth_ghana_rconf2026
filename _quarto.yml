@@ -1,0 +1,35 @@
+project:
+  title: AI-Driven Predictive Analytics for Business Growth Using R
+  type: default
+  execute-dir: project
+  output-dir: artifacts/reports
+
+editor: source
+execute:
+  echo: false
+  warning: false
+  message: false
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    theme: cosmo
+    code-fold: true
+  typst:
+    toc: true
+    lof: true
+    lot: true
+    main-color: "034e55"
+    template-partials:
+      - assets/typst-show.typ
+      - assets/typst-template.typ
+    background-img:
+      path: assets/www/background.jpg
+    header-logo:
+      path: assets/www/logo.jpg
+
+mermaid:
+  theme: default

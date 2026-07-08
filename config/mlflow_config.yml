@@ -1,0 +1,6 @@
+mlflow:
+  experiment_name: ghana-r-2026-real-estate-market-intelligence
+  tracking_uri: file:mlruns
+  log_artifacts: true
+  log_metrics: true
+  log_parameters: true

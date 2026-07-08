@@ -1,0 +1,2 @@
+run_mode,seed,split_type,train_prop,resampling_method,folds,strata,train_rows,test_rows,created_at
+fast,2026,initial_split,0.8,vfold_cv,3,price_band,11108,2780,2026-07-08 14:36:47.930797

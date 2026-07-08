@@ -1,0 +1,101 @@
+# R / RStudio local files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj.user
+
+# Local environment files
+.Renviron
+.Rprofile.local
+.env
+.env.local
+
+# Quarto / knitr generated files
+.quarto/
+_freeze/
+_site/
+*_cache/
+*_files/
+*.knit.md
+*.utf8.md
+
+# targets pipeline cache
+_targets/*
+!_targets/.gitignore
+
+# MLflow generated tracking files
+mlruns/
+artifacts/mlflow/*
+!artifacts/mlflow/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated data outputs; keep folder structure
+data/interim/*
+!data/interim/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+data/new/*
+!data/new/.gitkeep
+!data/new/sample_new_properties.csv
+
+# Generated artifacts; keep folder structure
+artifacts/metrics/*
+!artifacts/metrics/.gitkeep
+
+artifacts/models/*
+!artifacts/models/.gitkeep
+
+artifacts/model_package/*
+!artifacts/model_package/.gitkeep
+
+artifacts/predictions/*
+!artifacts/predictions/.gitkeep
+
+artifacts/figures/*
+!artifacts/figures/.gitkeep
+
+artifacts/reports/*
+!artifacts/reports/.gitkeep
+
+artifacts/governance/*
+!artifacts/governance/.gitkeep
+
+artifacts/logs/*
+!artifacts/logs/.gitkeep
+
+# Legacy generated reports
+reports/*.html
+reports/*.pdf
+reports/*.docx
+reports/*_files/
+reports/*_cache/
+
+# Logs and diagnostics
+*.log
+*.tmp
+*.bak
+*.backup
+*diagnostic*.txt
+scoring_warnings.txt
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Python/cache files, if any
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Docker local overrides
+docker-compose.override.yml
+
+/.quarto/
