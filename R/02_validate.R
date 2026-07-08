@@ -1,7 +1,7 @@
 # Data preparation and validation -----------------------------------
 
 validate_housing_data <- function(data, report_path = here::here("artifacts", "reports", "validation_report.html")) {
-  log_step("Running data validation checks with pointblank.")
+  log_step("Running data validation checks")
 
   required_columns <- c(
     "bedrooms", "bathrooms", "toilets", "parking_space",
