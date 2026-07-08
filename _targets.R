@@ -14,7 +14,7 @@ tar_option_set(packages = c(
 
 list(
   # Adding setting for Workshop -------------------------------------------------------------
-  tar_target(mode, "fast"),
+  tar_target(mode, "complete"),
 
   # Data loading and validation steps ----------------------------------------------
   tar_target(raw_data, import_raw_housing_data()),

@@ -44,7 +44,7 @@ The workshop now includes an explicit MLflow tracking stage. After model trainin
 Recommended workshop sequence:
 
 1. Start the MLflow UI.
-2. Run the fast or full modelling workflow.
+2. Run the complete or full modelling workflow.
 3. Run `source("scripts/03_run_mlflow_tracking.R")`.
 4. Open the MLflow UI and compare the logged metrics.
 

@@ -1,6 +1,6 @@
 # Split, resampling, and model-specific recipes ----------------------
 
-create_data_split_and_recipe <- function(data, seed = 2026, mode = c("fast", "full")) {
+create_data_split_and_recipe <- function(data, seed = 2026, mode = c("complete", "full")) {
   mode <- match.arg(mode)
   log_step("Creating train/test split, resampling folds, and model-specific recipes.")
 
@@ -9,10 +9,10 @@ create_data_split_and_recipe <- function(data, seed = 2026, mode = c("fast", "fu
   split_obj <- rsample::initial_split(data, prop = 0.80, strata = price_band)
   train_data <- rsample::training(split_obj)
 
-  fold_count <- ifelse(mode == "fast", 3, 5)
+  fold_count <- ifelse(mode == "complete", 3, 5)
   folds <- rsample::vfold_cv(train_data, v = fold_count, strata = price_band)
 
-  other_threshold <- ifelse(mode == "fast", 0.015, 0.005)
+  other_threshold <- ifelse(mode == "complete", 0.015, 0.005)
 
   # ---------------------------------------------------------------------------
   # Baseline recipe

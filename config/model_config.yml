@@ -9,13 +9,13 @@ modeling:
     train_prop: 0.80
     strata: price_band
   resampling:
-    fast_folds: 3
+    complete_folds: 3
     full_folds: 5
     method: vfold_cv
   champion_metric: rmse
 
 hyperparameter_search:
-  fast:
+  complete:
     random_forest_grid_levels: 3
     xgboost_grid_size: 6
   full:

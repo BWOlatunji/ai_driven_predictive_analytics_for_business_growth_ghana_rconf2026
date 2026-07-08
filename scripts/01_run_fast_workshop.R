@@ -1,4 +1,4 @@
-# Fast participant workflow -----------------------------------------------
+# complete participant workflow -----------------------------------------------
 # Local, hosted RStudio, and Docker-compatible execution.
 
 source("R/00_packages.R")
@@ -16,7 +16,7 @@ source("R/07_log_artifacts.R")
 
 create_project_dirs()
 
-mode <- "fast"
+mode <- "complete"
 cl <- start_parallel_backend(max_cores = 2)
 
 tryCatch(

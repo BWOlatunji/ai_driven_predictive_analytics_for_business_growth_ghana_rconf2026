@@ -1,8 +1,8 @@
 setup:
 	Rscript scripts/00_setup.R
 
-fast:
-	Rscript scripts/01_run_fast_workshop.R
+complete:
+	Rscript scripts/01_run_complete_workshop.R
 
 full:
 	Rscript scripts/02_run_full_lifecycle.R

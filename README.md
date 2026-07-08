@@ -114,11 +114,11 @@ quarto::quarto_check()
 ### 4. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/BWOlatunji/ai_driven_predictive_analytics_for_business_growth_ghana_rconf2026.git
+cd <your_repo_name>
 ```
 
-Replace `<your-username>` and `<repo-name>` with the actual GitHub repository details.
+Replace `<your_username>` and `<your_repo_name>` with the actual GitHub repository details.
 
 ---
 
@@ -163,22 +163,22 @@ The setup script loads required packages and creates the expected project folder
 
 ## Quick Start: Run the Workshop Locally
 
-After setup, run the fast workshop lifecycle:
+After setup, run the complete workshop lifecycle:
 
 ```r
 source("scripts/00_setup.R")
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 ```
 
 This is the recommended route for participants during the live session.
 
-The fast workflow is designed to complete within a reasonable workshop timeframe while still demonstrating the full machine-learning lifecycle.
+The complete workflow is designed to complete within a reasonable workshop timeframe while still demonstrating the full machine-learning lifecycle.
 
 ---
 
 ## Expected Outputs
 
-After the fast workflow completes, check these files:
+After the complete workflow completes, check these files:
 
 ```text
 artifacts/metrics/model_comparison.csv
@@ -381,7 +381,7 @@ The project is organized as follows:
 │   └── utils.R
 ├── scripts/
 │   ├── 00_setup.R
-│   ├── 01_run_fast_workshop.R
+│   ├── 01_run_complete_workshop.R
 │   ├── 02_run_full_workshop.R
 │   ├── 03_run_mlflow_tracking.R
 │   ├── 04_package_model.R
@@ -530,7 +530,7 @@ Participants generate these outputs themselves by running:
 
 ```r
 source("scripts/00_setup.R")
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 ```
 
 This allows everyone to confirm that the full workflow is working on their system.
@@ -640,7 +640,7 @@ unlink("artifacts/reports", recursive = TRUE, force = TRUE)
 unlink("artifacts/governance", recursive = TRUE, force = TRUE)
 
 source("scripts/00_setup.R")
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 ```
 
 ---

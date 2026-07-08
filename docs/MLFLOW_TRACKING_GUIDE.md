@@ -26,7 +26,7 @@ This workshop includes MLflow as the experiment tracking layer for the Nigeria r
 
 ## What MLflow tracks
 
-The R workflow logs the current modelling run after the fast or full lifecycle has produced artifacts. The MLflow run records:
+The R workflow logs the current modelling run after the complete or full lifecycle has produced artifacts. The MLflow run records:
 
 - experiment name;
 - run name;
@@ -54,7 +54,7 @@ Then, in R:
 
 ```r
 Sys.setenv(MLFLOW_TRACKING_URI = "http://127.0.0.1:5001")
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 source("scripts/03_run_mlflow_tracking.R")
 ```
 
@@ -100,7 +100,7 @@ Password: workshop
 Inside the RStudio container, run:
 
 ```r
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 source("scripts/03_run_mlflow_tracking.R")
 ```
 
@@ -124,7 +124,7 @@ This prevents the workshop from failing just because the tracking server is unav
 
 1. Explain why experiment tracking matters.
 2. Start the MLflow UI.
-3. Run the fast workshop lifecycle.
+3. Run the complete workshop lifecycle.
 4. Run MLflow logging.
 5. Refresh the MLflow UI.
 6. Show the experiment, run name, metrics, parameters, and tags.

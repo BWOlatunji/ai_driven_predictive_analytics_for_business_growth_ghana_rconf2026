@@ -1,5 +1,5 @@
 # Render stakeholder report ---------------------------------------------------
-# Run after scripts/01_run_fast_workshop.R or scripts/02_run_full_lifecycle.R.
+# Run after scripts/01_run_complete_workshop.R or scripts/02_run_full_lifecycle.R.
 
 source("R/00_packages.R")
 load_required_packages()

@@ -28,10 +28,10 @@ source("scripts/00_setup.R")
 
 This installs missing packages, loads the package bootstrap, and creates required folders under `data/` and `artifacts/`.
 
-## 4. Run the fast workshop workflow
+## 4. Run the complete workshop workflow
 
 ```r
-source("scripts/01_run_fast_workshop.R")
+source("scripts/01_run_complete_workshop.R")
 ```
 
 This creates the main outputs:
@@ -71,7 +71,7 @@ artifacts/predictions/scored_new_properties.csv
 
 ## 7. Render the report manually, if needed
 
-The fast workflow already renders the report. To rerender it manually:
+The complete workflow already renders the report. To rerender it manually:
 
 ```r
 source("scripts/07_render_report.R")

@@ -70,7 +70,7 @@ write_hyperparameter_artifacts <- function(training_results) {
 
 train_and_tune_models <- function(split_obj,
                                   house_recipe = NULL,
-                                  mode = c("fast", "full"),
+                                  mode = c("complete", "full"),
                                   seed = 2026,
                                   linear_recipe = NULL,
                                   tree_recipe = NULL,
@@ -107,7 +107,7 @@ train_and_tune_models <- function(split_obj,
   if (is.null(folds)) {
     folds <- rsample::vfold_cv(
       train_data,
-      v = ifelse(mode == "fast", 3, 5),
+      v = ifelse(mode == "complete", 3, 5),
       strata = price_band
     )
   }
@@ -118,7 +118,7 @@ train_and_tune_models <- function(split_obj,
     parsnip::set_engine("lm")
 
   rf_spec <- parsnip::rand_forest(
-    trees = ifelse(mode == "fast", 150, 500),
+    trees = ifelse(mode == "complete", 150, 500),
     mtry = tune::tune(),
     min_n = tune::tune()
   ) %>%
@@ -126,7 +126,7 @@ train_and_tune_models <- function(split_obj,
     parsnip::set_mode("regression")
 
   xgb_spec <- parsnip::boost_tree(
-    trees = ifelse(mode == "fast", 150, 500),
+    trees = ifelse(mode == "complete", 150, 500),
     tree_depth = tune::tune(),
     learn_rate = tune::tune(),
     loss_reduction = tune::tune(),
@@ -182,7 +182,7 @@ train_and_tune_models <- function(split_obj,
   rf_grid <- dials::grid_regular(
     dials::mtry(range = c(3, 12)),
     dials::min_n(range = c(5, 30)),
-    levels = ifelse(mode == "fast", 3, 5)
+    levels = ifelse(mode == "complete", 3, 5)
   )
 
   rf_res <- tune::tune_grid(
@@ -194,7 +194,7 @@ train_and_tune_models <- function(split_obj,
   )
 
   emit_training_progress("Tuning XGBoost.")
-  xgb_grid <- dials::grid_latin_hypercube(
+  xgb_grid <- dials::grid_space_filling(
     dials::tree_depth(range = c(3, 8)),
     dials::learn_rate(range = c(-3, -1)),
     dials::loss_reduction(range = c(-5, 0)),

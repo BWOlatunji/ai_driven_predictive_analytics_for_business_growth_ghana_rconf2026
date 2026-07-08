@@ -44,4 +44,4 @@ if (requireNamespace("quarto", quietly = TRUE)) {
   }
 }
 
-message("Setup complete. You can now run source('scripts/01_run_fast_workshop.R').")
+message("Setup complete. You can now run source('scripts/01_run_complete_workshop.R').")
