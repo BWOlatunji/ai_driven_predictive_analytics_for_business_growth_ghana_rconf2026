@@ -202,28 +202,11 @@ You can also inspect the model leaderboard:
 readr::read_csv("artifacts/metrics/model_comparison.csv")
 ```
 
-The expected champion model for the current workflow is usually **XGBoost**, although exact metrics may vary slightly by system, package version, and tuning run.
+The champion model for the current workflow is **XGBoost**, although exact metrics may vary slightly by system, package version, and tuning run.
 
 ---
 
-## Optional: Run the Full Workflow
-
-The full workflow uses more resampling and tuning effort.
-
-Run it only if you have enough time and computing resources:
-
-```r
-source("scripts/00_setup.R")
-source("scripts/02_run_full_workshop.R")
-```
-
-Recommended for after the workshop or for portfolio polishing.
-
----
-
-## Optional: Use `targets` for a Production-Style Pipeline
-
-The live workshop uses scripts because they are easier for participants to follow step by step.
+## Use `targets` for a Reproducible Pipeline
 
 If you want to run the project as a reproducible pipeline, use:
 
@@ -252,79 +235,6 @@ targets::tar_make()
 
 ---
 
-## Optional: Local MLflow Tracking Without Docker
-
-MLflow tracking is optional. The main workshop workflow works without MLflow.
-
-To use MLflow locally without Docker, you need Python and the Python `mlflow` package.
-
-### 1. Install MLflow in Python
-
-From your system terminal:
-
-```bash
-python -m pip install mlflow
-```
-
-Confirm installation:
-
-```bash
-python -m mlflow --version
-```
-
-### 2. Start the local MLflow server
-
-You can start MLflow from the system terminal:
-
-```bash
-mlflow server \
-  --backend-store-uri sqlite:///mlruns/mlflow.db \
-  --default-artifact-root ./artifacts/mlflow \
-  --host 127.0.0.1 \
-  --port 5001
-```
-
-On Windows PowerShell, use a single line:
-
-```powershell
-mlflow server --backend-store-uri sqlite:///mlruns/mlflow.db --default-artifact-root ./artifacts/mlflow --host 127.0.0.1 --port 5001
-```
-
-Then open:
-
-```text
-http://127.0.0.1:5001
-```
-
-### 3. Log the R workflow results to MLflow
-
-In RStudio, after running the workshop lifecycle:
-
-```r
-Sys.setenv(MLFLOW_TRACKING_URI = "http://127.0.0.1:5001")
-source("scripts/03_run_mlflow_tracking.R")
-```
-
-Expected MLflow experiment name:
-
-```text
-ghana-r-2026-real-estate-market-intelligence
-```
-
-In the MLflow UI, check:
-
-```text
-Parameters → champion_model
-Metrics → champion_rmse, champion_mae, champion_rsq
-```
-
-If MLflow is not running, the project will write a local fallback ledger instead of failing:
-
-```text
-artifacts/metrics/mlflow_fallback_experiment_ledger.csv
-```
-
----
 
 ## Optional: Package and Score New Data
 
@@ -443,9 +353,6 @@ This means model metrics such as RMSE and MAE are calculated on the log-transfor
 
 For business interpretation, predictions are converted back to estimated Naira price using:
 
-```r
-expm1(predicted_log_price)
-```
 
 So the workflow produces both:
 
@@ -507,26 +414,7 @@ The most important takeaway is the workflow pattern, not just the real estate us
 
 ## Clean Repository Policy
 
-Participants should receive a clean repository.
-
-Generated files are intentionally ignored by Git, including:
-
-```text
-artifacts/metrics/
-artifacts/models/
-artifacts/model_package/
-artifacts/predictions/
-artifacts/figures/
-artifacts/reports/
-artifacts/governance/
-artifacts/mlflow/
-data/interim/
-data/processed/
-mlruns/
-_targets/
-```
-
-Participants generate these outputs themselves by running:
+As a participant, you should receive a clean repository. You will generate these outputs yourself by running:
 
 ```r
 source("scripts/00_setup.R")
@@ -610,44 +498,9 @@ artifacts/reports/quarto_render_diagnostic.txt
 
 ---
 
-### Problem: MLflow UI does not open
-
-MLflow is optional.
-
-Check that the server is running at:
-
-```text
-http://127.0.0.1:5001
-```
-
-If you are not using MLflow, continue with the main workflow. The project will still generate local metrics and reports.
-
----
-
-### Problem: XGBoost cached model error
-
-If you see a corrupted `xgb.Booster` or stale model cache error, clear generated model outputs and rerun:
-
-```r
-targets::tar_destroy()
-
-unlink("artifacts/models", recursive = TRUE, force = TRUE)
-unlink("artifacts/model_package", recursive = TRUE, force = TRUE)
-unlink("artifacts/metrics", recursive = TRUE, force = TRUE)
-unlink("artifacts/predictions", recursive = TRUE, force = TRUE)
-unlink("artifacts/figures", recursive = TRUE, force = TRUE)
-unlink("artifacts/reports", recursive = TRUE, force = TRUE)
-unlink("artifacts/governance", recursive = TRUE, force = TRUE)
-
-source("scripts/00_setup.R")
-source("scripts/01_run_complete_workshop.R")
-```
-
----
-
 ## After the Workshop
 
-Recommended next steps:
+Below are recommended next steps:
 
 - Fork the repository
 - Replace the Nigeria housing data with your own sector data
@@ -658,19 +511,6 @@ Recommended next steps:
 
 ---
 
-## License and Data Note
-
-Add the final license before publishing the repository.
-
-Recommended:
-
-```text
-MIT License for code
-```
-
-Also clearly document the data source, usage rights, and any restrictions.
-
----
 
 ## Acknowledgments
 
