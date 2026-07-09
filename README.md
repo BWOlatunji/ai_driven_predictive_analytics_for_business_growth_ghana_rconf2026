@@ -235,6 +235,79 @@ targets::tar_make()
 
 ---
 
+## Optional: Local MLflow Tracking Without Docker
+
+MLflow tracking is optional. The main workshop workflow works without MLflow.
+
+To use MLflow locally without Docker, you need Python and the Python `mlflow` package.
+
+### 1. Install MLflow in Python
+
+From your system terminal:
+
+```bash
+python -m pip install mlflow
+```
+
+Confirm installation:
+
+```bash
+python -m mlflow --version
+```
+
+### 2. Start the local MLflow server
+
+You can start MLflow from the system terminal:
+
+```bash
+mlflow server \
+  --backend-store-uri sqlite:///mlruns/mlflow.db \
+  --default-artifact-root ./artifacts/mlflow \
+  --host 127.0.0.1 \
+  --port 5001
+```
+
+On Windows PowerShell, use a single line:
+
+```powershell
+mlflow server --backend-store-uri sqlite:///mlruns/mlflow.db --default-artifact-root ./artifacts/mlflow --host 127.0.0.1 --port 5001
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5001
+```
+
+### 3. Log the R workflow results to MLflow
+
+In RStudio, after running the workshop lifecycle:
+
+```r
+Sys.setenv(MLFLOW_TRACKING_URI = "http://127.0.0.1:5001")
+source("scripts/03_run_mlflow_tracking.R")
+```
+
+Expected MLflow experiment name:
+
+```text
+ghana-r-2026-real-estate-market-intelligence
+```
+
+In the MLflow UI, check:
+
+```text
+Parameters → champion_model
+Metrics → champion_rmse, champion_mae, champion_rsq
+```
+
+If MLflow is not running, the project will write a local fallback ledger instead of failing:
+
+```text
+artifacts/metrics/mlflow_fallback_experiment_ledger.csv
+```
+
+---
 
 ## Optional: Package and Score New Data
 
