@@ -1,2 +1,2 @@
-# Compatibility wrapper. Prefer scripts/00_setup.R.
+# setup
 source("scripts/00_setup.R")

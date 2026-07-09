@@ -1,11 +1,5 @@
 # Start a local MLflow server without Docker ---------------------------------
-# Optional. The core workshop workflow can run without MLflow; in that case
-# scripts/03_run_mlflow_tracking.R writes a local fallback ledger.
-#
-# To use this script, install the Python MLflow CLI first:
-#   python -m pip install mlflow
-#
-# Then run this script from the R console and keep the R session open.
+# Check guideline on README.md
 
 source("scripts/00_setup.R")
 

@@ -1,5 +1,4 @@
-# complete participant workflow -----------------------------------------------
-# Local, hosted RStudio, and Docker-compatible execution.
+# complete workflow -----------------------------------------------
 
 source("R/00_packages.R")
 load_required_packages()

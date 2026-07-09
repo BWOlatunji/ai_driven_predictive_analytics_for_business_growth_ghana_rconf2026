@@ -30,9 +30,7 @@ source("config/project_config.R")
 source("R/utils.R")
 create_project_dirs()
 
-# Quarto report rendering requires the Quarto CLI. Recent RStudio Desktop
-# versions usually include it. If this warning appears, install Quarto Desktop
-# from https://quarto.org before rendering report.qmd.
+
 if (requireNamespace("quarto", quietly = TRUE)) {
   qpath <- tryCatch(quarto::quarto_path(), error = function(e) "")
   if (!nzchar(qpath)) {

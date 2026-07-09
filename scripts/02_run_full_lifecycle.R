@@ -1,5 +1,4 @@
-# Full facilitator workflow -----------------------------------------------
-# Local, hosted RStudio, and Docker-compatible execution.
+# Full workflow -----------------------------------------------
 
 source("R/00_packages.R")
 load_required_packages()

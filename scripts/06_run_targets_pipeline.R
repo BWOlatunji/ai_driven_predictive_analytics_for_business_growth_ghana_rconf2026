@@ -1,4 +1,4 @@
-# Going through the production workflow using targets ----------------------------
+# Going through the workflow using targets ----------------------------
 
 
 source("scripts/00_setup.R")
