@@ -5,7 +5,6 @@ required_packages <- c(
   "tidymodels",
   "ranger",
   "xgboost",
-  "vip",
   "pointblank",
   "skimr",
   "janitor",
